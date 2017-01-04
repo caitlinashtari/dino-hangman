@@ -20,7 +20,7 @@ exports.dinoModule = Dino;
 var Dino = require('./../js/dino.js').dinoModule;
 
 var dinoDisplay = function(apiResponse) {
-  $(".dinoDisplay").text(apiResponse);
+  $(".dinoDisplay").html(apiResponse);
 };
 
 $(document).ready(function() {
