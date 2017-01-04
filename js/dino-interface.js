@@ -1,15 +1,20 @@
 var Dino = require('./../js/dino.js').dinoModule;
 
-var dinoDisplay = function(apiResponse) {
-  $(".dinoDisplay").html(apiResponse);
+var wordDisplay = function(word) {
+  $(".dinoWord").html(word);
 };
 
 $(document).ready(function() {
-  $("#dinoForm").submit(function(event) {
-    event.preventDefault();
-    var words = $("#words").val();
-    var paragraphs = $("#paragraphs").val();
+  // $("#dinoForm").submit(function(event) {
+  //   event.preventDefault();
+  //
+  // });
+
+  $("#newGameButt").click(function(){
+    $(".newGame").hide();
+    $("#dinoForm").show();
     var thisDino = new Dino();
-    var output = thisDino.getDinoIpsum(paragraphs, words, dinoDisplay);
+    var output = thisDino.getDinoIpsum(wordDisplay);
+    wordDisplay(output);
   });
 });

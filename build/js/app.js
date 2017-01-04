@@ -2,15 +2,19 @@
 Dino = function(){
 };
 
-Dino.prototype.getDinoIpsum = function(paragraphs, words, displayFunction) {
+Dino.prototype.getDinoIpsum = function(displayFunction) {
   console.log("getDinoIpsum has been called");
-  $.get('http://dinoipsum.herokuapp.com/api/?paragraphs=' + paragraphs + '&words=' + words).then(function(response) {
+  $.get('http://dinoipsum.herokuapp.com/api/?paragraphs=1&words=1').then(function(response) {
     console.log(JSON.stringify(response));
     displayFunction(response);
   }).fail(function(error) {
     $(".dinoDisplay").text("ERROR");
   });
 };
+
+// Dino.prototype.checkMatch = function(letter) {
+//
+// };
 
 
 
@@ -19,17 +23,22 @@ exports.dinoModule = Dino;
 },{}],2:[function(require,module,exports){
 var Dino = require('./../js/dino.js').dinoModule;
 
-var dinoDisplay = function(apiResponse) {
-  $(".dinoDisplay").html(apiResponse);
+var wordDisplay = function(word) {
+  $(".dinoWord").html(word);
 };
 
 $(document).ready(function() {
-  $("#dinoForm").submit(function(event) {
-    event.preventDefault();
-    var words = $("#words").val();
-    var paragraphs = $("#paragraphs").val();
+  // $("#dinoForm").submit(function(event) {
+  //   event.preventDefault();
+  //
+  // });
+
+  $("#newGameButt").click(function(){
+    $(".newGame").hide();
+    $("#dinoForm").show();
     var thisDino = new Dino();
-    var output = thisDino.getDinoIpsum(paragraphs, words, dinoDisplay);
+    var output = thisDino.getDinoIpsum(wordDisplay);
+    wordDisplay(output);
   });
 });
 
