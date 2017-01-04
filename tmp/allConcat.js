@@ -1,7 +1,12 @@
 var Dino = require('./../js/dino.js').dinoModule;
 
 var wordDisplay = function(word) {
-  $(".dinoWord").html(word);
+  var letterArray = [];
+  for (i = 0; i < word.length; i++) {
+    letterArray.push(" _ ");
+  }
+  output = letterArray.join("");
+  $(".dinoWord").html(output);
 };
 
 $(document).ready(function() {
