@@ -1,25 +1,24 @@
 var Dino = require('./../js/dino.js').dinoModule;
 
-var wordDisplay = function(word) {
-  var letterArray = [];
-  for (i = 0; i < word.length; i++) {
-    letterArray.push(" _ ");
-  }
-  output = letterArray.join("");
-  $(".dinoWord").html(output);
-};
+var secretWord = "";
 
 $(document).ready(function() {
-  // $("#dinoForm").submit(function(event) {
-  //   event.preventDefault();
-  //
-  // });
+
+  $("#letterGuessForm").submit(function(event) {
+    event.preventDefault();
+    guess = $("#letterGuess").val();
+    success = checkMatch(guess);
+    if (success === true) {
+      console.log("WOOT");
+    } else {
+      console.log("FAIL");
+    }
+  });
 
   $("#newGameButt").click(function(){
     $(".newGame").hide();
-    $("#dinoForm").show();
+    $("#letterGuessForm").show();
     var thisDino = new Dino();
-    var output = thisDino.getDinoIpsum(wordDisplay);
-    wordDisplay(output);
+    thisDino.getDinoIpsum();
   });
 });
