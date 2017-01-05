@@ -30,7 +30,7 @@ $(document).ready(function() {
   var getDinos = $.get('http://dinoipsum.herokuapp.com/api/?format=json&paragraphs=1&words=1'),
       fillContainer = function() {
         response = getDinos.responseJSON[0][0];
-        makeDino(response);
+        makeDino(response.toLowerCase());
       },
       oops = function() {
         console.log('Where did all the dinosaurs go?');
@@ -55,7 +55,7 @@ function makeDino(dinoWord){
 
   $("#letterGuessForm").submit(function(event) {
     event.preventDefault();
-    guess = $("#letterGuess").val();
+    guess = $("#letterGuess").val().toLowerCase();
     success = checkMatch(guess, dinoWord1, underWord);
     if (success === dinoWord1) {
       console.log("fail");
