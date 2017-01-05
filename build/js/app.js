@@ -26,6 +26,7 @@ var checkMatch = function(guessedLetter, secretWord, underWord) {
     }
   }
   var underWord = underArray.join(" ");
+  console.log(underWord);
   return underWord;
 };
 
@@ -71,13 +72,13 @@ function makeDino(dinoWord){
     event.preventDefault();
     guess = $("#letterGuess").val().toLowerCase();
     success = checkMatch(guess, dinoWord1, underWord);
-    if (success === dinoWord1) {
-      console.log("fail");
+    if (success == underWord) {
+      $('#letterList').append('<li>' + guess + '</li>');
     }
     else {
+      $('#letterList').append('<li>' + guess + '</li>');
       $('#gameWord').text(success);
       underWord = success;
-      console.log("dinoword" + dinoWord1);
     }
   });
 }
