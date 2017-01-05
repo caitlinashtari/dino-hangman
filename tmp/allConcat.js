@@ -62,6 +62,8 @@ function makeDino(dinoWord){
     }
     else {
       $('#gameWord').text(success);
+      underWord = success;
+      console.log("dinoword" + dinoWord1);
     }
   });
 }
