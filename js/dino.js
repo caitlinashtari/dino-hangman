@@ -25,15 +25,5 @@ Dino.prototype.getDinoIpsum = function() {
 };
 
 
-var checkMatch = function(guessedLetter) {
-  var success = false;
-  for (i = 0; i < secretWord.length; i++) {
-    if (guessedLetter == secretWord[i]) {
-      secretWord.replace(secretWord[i], guessedLetter);
-      success = true;
-    }
-  }
-  return success;
-};
 
 exports.dinoModule = Dino;

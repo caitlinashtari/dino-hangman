@@ -26,30 +26,30 @@ Dino.prototype.getDinoIpsum = function() {
 };
 
 
-var checkMatch = function(guessedLetter) {
-  var success = false;
-  for (i = 0; i < secretWord.length; i++) {
-    if (guessedLetter == secretWord[i]) {
-      secretWord.replace(secretWord[i], guessedLetter);
-      success = true;
-    }
-  }
-  return success;
-};
 
 exports.dinoModule = Dino;
 
 },{}],2:[function(require,module,exports){
 var Dino = require('./../js/dino.js').dinoModule;
 
-var secretWord = "";
+var checkMatch = function(guessedLetter, secretWord) {
+  console.log("check for secret word"+ secretWord);
+  for (i = 0; i < secretWord.length; i++) {
+    if (guessedLetter == secretWord[i]) {
+      secretWord.replace(secretWord[i], guessedLetter);
+      return true;
+    }
+  }
+};
+
 
 $(document).ready(function() {
 
   $("#letterGuessForm").submit(function(event) {
     event.preventDefault();
     guess = $("#letterGuess").val();
-    success = checkMatch(guess);
+    success = checkMatch(guess, thisDino.word);
+    console.log("submit form" + success);
     if (success === true) {
       console.log("WOOT");
     } else {
