@@ -1,6 +1,6 @@
 function Dino() {
-  this.word = ""
-};
+  this.word = "";
+}
 
 
 
